@@ -15,7 +15,7 @@ def get_comercio_data(year):
     return json_data
 
 
-def get_processa_data(_type, year):
+def get_processa_data(year, _type="mesa"):
     table = "ProcessaMesa"
     if _type == 'semclasse':
         table = "ProcessaSemclass"

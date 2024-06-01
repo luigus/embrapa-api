@@ -29,7 +29,7 @@ def comercio(year: str):
 @app.get("/processa/{_type}/{year}")
 def processa(_type: str, year: str):
 
-    data = get_processa_data(_type, year)
+    data = get_processa_data(year, _type)
     if not data:
         raise HTTPException(status_code=404, detail="Data not found or table does not exist")
     return json.loads(data)
@@ -38,7 +38,7 @@ def processa(_type: str, year: str):
 @app.get("/importacao/{_type}/{year}")
 def importacao(_type: str, year: str):
 
-    data = get_importacao_data(_type, year)
+    data = get_importacao_data(year, _type)
     if not data:
         raise HTTPException(status_code=404, detail="Data not found or table does not exist")
     return json.loads(data)
@@ -47,7 +47,7 @@ def importacao(_type: str, year: str):
 @app.get("/exportacao/{_type}/{year}")
 def exportacao(_type: str, year: str):
 
-    data = get_exportacao_data(_type, year)
+    data = get_exportacao_data(year, _type)
     if not data:
         raise HTTPException(status_code=404, detail="Data not found or table does not exist")
     return json.loads(data)
