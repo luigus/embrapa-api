@@ -33,8 +33,9 @@ def get_processa_data(_type, year):
     return json_data
 
 
-def get_importacao_data(_type, year):
+def get_importacao_data(year, _type='vinho'):
     table = "ImpVinhos"
+
     if _type == 'suco':
         table = "ImpSuco"
 
@@ -54,8 +55,9 @@ def get_importacao_data(_type, year):
     return json_data
 
 
-def get_exportacao_data(_type, year):
+def get_exportacao_data(year, _type='vinho'):
     table = "ExpVinhos"
+
     if _type == 'suco':
         table = "ExpSuco"
 
