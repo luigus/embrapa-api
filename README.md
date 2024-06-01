@@ -79,9 +79,9 @@ $ python -m uvicorn main:app --reload
 
 
 ## API
-| API 				   | METHOD 	| ENDPOINTS 				| Type   			 
+| INFO 				   | METHOD 	| ENDPOINTS 				| Type   			 
 | ------ 			   | ------ 	|------ 			   		|------
-| Producao     		   | GET 		| producao/{year} 	        |
+| Producao     		   | GET 		| producao/{year} 	        | 
 | Comercio             | GET 		| comercio/{year} 	        |
 | Processamento        | Get 		| processa/{type}/{year}    | mesa, americanas, viniferas, semclasse
 | Importacao           | Get 		| importacao/{type}/{year}  | suco, passas, vinho, frescas, espumantes

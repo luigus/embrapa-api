@@ -2,14 +2,14 @@ from utils import query_database, results_to_json
 
 
 def get_producao_data(year):
-    query = f'SELECT Id, control, produto, "{year}" FROM Producao;'
+    query = f'SELECT Id, control, produto, "{year}"  as "quantidade(L)" FROM Producao;'
     results = query_database(query)
     json_data = results_to_json(results)
     return json_data
 
 
 def get_comercio_data(year):
-    query = f'SELECT Id, control, produto, "{year}" FROM Comercio;'
+    query = f'SELECT Id, control, produto, "{year}" as "quantidade(L)" FROM Comercio;'
     results = query_database(query)
     json_data = results_to_json(results)
     return json_data
@@ -26,7 +26,7 @@ def get_processa_data(year, _type="mesa"):
     if _type == 'viniferas':
         table = "ProcessaViniferas"
 
-    query = f'SELECT Id, control, cultivar, "{year}" FROM {table};'
+    query = f'SELECT Id, control, cultivar, "{year}"  as "quantidade(Kg)" FROM {table};'
 
     results = query_database(query)
     json_data = results_to_json(results)
@@ -48,7 +48,7 @@ def get_importacao_data(year, _type='vinho'):
     if _type == 'espumantes':
         table = "ImpEspumantes"
 
-    query = f'SELECT Id, "País", "{year}_q" as "qtd (kg)", "{year}_v" as "valor (US$)"  FROM {table};'
+    query = f'SELECT Id, "País", "{year}_q" as "quantidade(Kg)", "{year}_v" as "valor (US$)"  FROM {table};'
 
     results = query_database(query)
     json_data = results_to_json(results)
@@ -67,7 +67,7 @@ def get_exportacao_data(year, _type='vinho'):
     if _type == 'espumantes':
         table = "ExpEspumantes"
 
-    query = f'SELECT Id, "País", "{year}_q" as "qtd (kg)", "{year}_v" as "valor (US$)"  FROM {table};'
+    query = f'SELECT Id, "País", "{year}_q" as "quantidade(kg)", "{year}_v" as "valor (US$)"  FROM {table};'
 
     results = query_database(query)
     json_data = results_to_json(results)
