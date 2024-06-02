@@ -17,13 +17,13 @@ $ git clone https://github.com/luigus/embrapa-api.git
 
 #
 ## Setup project
-#### You can setup the project using uv with pip.
-
 #### Using pip and virtualenv
 ```sh
 $ cd embrapa-api/
 $ python -m venv .venv -p python3.7
 $ source .venv/bin/activate
+$ pip install --upgrade pip
+$ pip install uv
 $ uv pip install -r requirements.txt
 ```
 
@@ -61,7 +61,19 @@ $ SELECT name FROM sqlite_master WHERE type='table';
 
 
 #
-## Run FastAPI Web App
+## Build and Run FastAPI Web App
+#### You need Docker and docker-compose environment enabled
+```sh
+$ docker-compose build
+```
+
+#### To run the application
+```sh
+$ docker-compose up
+```
+
+#
+## Run FastAPI Web App in Local
 #### You need to have the environment enabled
 ```sh
 $ cd embrapa-api/
