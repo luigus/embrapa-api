@@ -1,21 +1,21 @@
 from utils import query_database, results_to_json
 
 
-def get_producao_data(year):
+def get_producao_data(year=2022):
     query = f'SELECT Id, control, produto, "{year}"  as "quantidade(L)" FROM Producao;'
     results = query_database(query)
     json_data = results_to_json(results)
     return json_data
 
 
-def get_comercio_data(year):
+def get_comercio_data(year=2022):
     query = f'SELECT Id, control, produto, "{year}" as "quantidade(L)" FROM Comercio;'
     results = query_database(query)
     json_data = results_to_json(results)
     return json_data
 
 
-def get_processa_data(year, _type="mesa"):
+def get_processa_data(_type="mesa", year=2022):
     table = "ProcessaMesa"
     if _type == 'semclasse':
         table = "ProcessaSemclass"
@@ -33,7 +33,7 @@ def get_processa_data(year, _type="mesa"):
     return json_data
 
 
-def get_importacao_data(year, _type='vinho'):
+def get_importacao_data(_type='vinho', year=2022):
     table = "ImpVinhos"
 
     if _type == 'suco':
@@ -55,7 +55,7 @@ def get_importacao_data(year, _type='vinho'):
     return json_data
 
 
-def get_exportacao_data(year, _type='vinho'):
+def get_exportacao_data(_type='vinho', year=2022):
     table = "ExpVinhos"
 
     if _type == 'suco':

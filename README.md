@@ -4,8 +4,7 @@
 
 * [Python] - Python in version >= 3.7.4
 * [SQLite3] - Database
-#
-## Python packages manager
+* [FastAPI] - Web Python lib
 * [UV] - uv is and extremely fast Python package and resolver.
 * [Pip] - Simple python packager manager
 #
@@ -37,7 +36,9 @@ If you want to check the table names, please, run this SQL query command below:
 $ SELECT name FROM sqlite_master WHERE type='table';
 ```
 
-#### Tables start with Imp (means Importacao), tables starts with Exp (means Expertacao), tables starts with Processa (means Processamento)
+* Tables starts with Imp (means Importacao)
+* Tables starts with Exp (means Exportacao)
+* Tables starts with Processa (means Processamento)
 #
 ### List of tables inside database
 | name 			   
@@ -69,11 +70,11 @@ $ python -m uvicorn main:app --reload
 
 #### The following list of links will be available after the project starts
 * http://localhost:8000/docs
-* http://localhost:8000//producao/{year}
-* http://localhost:8000//comercio/{year}
-* http://localhost:8000//processa/{type}/{year}
-* http://localhost:8000//importacao/{type}/{year}
-* http://localhost:8000//exportacao/{type}/{year}
+* http://localhost:8000/api/producao/{year}
+* http://localhost:8000/api/comercio/{year}
+* http://localhost:8000/api/processa/{type}/{year}
+* http://localhost:8000/api/importacao/{type}/{year}
+* http://localhost:8000/api/exportacao/{type}/{year}
 
 #{year} could be beetween 1970 and 2023
 
@@ -81,20 +82,133 @@ $ python -m uvicorn main:app --reload
 ## API
 | INFO 				   | METHOD 	| ENDPOINTS 				| Type   			 
 | ------ 			   | ------ 	|------ 			   		|------
-| Producao     		   | GET 		| producao/{year} 	        | 
-| Comercio             | GET 		| comercio/{year} 	        |
-| Processamento        | Get 		| processa/{type}/{year}    | mesa, americanas, viniferas, semclasse
-| Importacao           | Get 		| importacao/{type}/{year}  | suco, passas, vinho, frescas, espumantes
-| Exportacao           | Get 		| exportacao/{type}/{year}  | suco, uva, espumantes
+| Producao     		   | GET 		| api/producao/{year} 	        | 
+| Comercio             | GET 		| api/comercio/{year} 	        |
+| Processamento        | GET 		| api/processa/{type}/{year}    | mesa, americanas, viniferas, semclasse
+| Importacao           | GET 		| api/importacao/{type}/{year}  | suco, passas, vinho, frescas, espumantes
+| Exportacao           | GET 		| api/exportacao/{type}/{year}  | suco, uva, espumantes
+#
 
-
-#### Exemples of endpoints
+## Endpoints
 * http://localhost:8000/docs
-* http://localhost:8000//producao/2020
-* http://localhost:8000//comercio/2019
-* http://localhost:8000//processa/mesa/2021
-* http://localhost:8000//importacao/suvo/2018
-* http://localhost:8000//exportacao/uva/2017
 
+![plot](docs.png)
+#
 
+* http://localhost:8000/api/producao/2020
+```
+[
+	{
+		"id": 1,
+		"control": "VINHO DE MESA",
+		"produto": "VINHO DE MESA",
+		"quantidade(L)": 124200414
+	},
+	{
+		"id": 2,
+		"control": "vm_Tinto",
+		"produto": "Tinto",
+		"quantidade(L)": 103916391
+	},
+    ....
+]
+```
+
+#
+* http://localhost:8000/api/comercio/2019
+```
+[
+	{
+		"id": 1,
+		"control": "VINHO DE MESA",
+		"Produto": "VINHO DE MESA",
+		"quantidade(L)": 180446489
+	},
+	{
+		"id": 2,
+		"control": "vm_Tinto",
+		"Produto": "  Tinto",
+		"quantidade(L)": 158519218
+	},
+    ....
+]
+```
+
+#
+* http://localhost:8000/api/processa/mesa/2021
+```
+[
+	{
+		"id": 1,
+		"control": "TINTAS",
+		"cultivar": "TINTAS",
+		"quantidade(Kg)": 21732
+	},
+	{
+		"id": 2,
+		"control": "ti_ Alphonse Lavallee",
+		"cultivar": " Alphonse Lavallee",
+		"quantidade(Kg)": 0
+	},
+	{
+		"id": 3,
+		"control": "ti_ Moscato de Hamburgo",
+		"cultivar": " Moscato de Hamburgo",
+		"quantidade(Kg)": 21732
+	},
+	.....
+]
+```
+
+#
+* http://localhost:8000/api/importacao/suco/2018
+```
+[
+	{
+		"Id": 1,
+		"País": "Africa do Sul",
+		"quantidade(Kg)": 21618,
+		"valor (US$)": 18334
+	},
+	{
+		"Id": 2,
+		"País": "Alemanha",
+		"quantidade(Kg)": 80,
+		"valor (US$)": 652
+	},
+	{
+		"Id": 3,
+		"País": "Argentina",
+		"quantidade(Kg)": 2998,
+		"valor (US$)": 3139
+	},
+	....
+]
+```
+
+#
+* http://localhost:8000/api/exportacao/uva/2017
+```
+[
+	{
+		"Id": 1,
+		"País": "Africa do Sul",
+		"quantidade(kg)": 0,
+		"valor (US$)": 0
+	},
+	{
+		"Id": 2,
+		"País": "Alemanha, República Democrática",
+		"quantidade(kg)": 3353831,
+		"valor (US$)": 6730502
+	},
+	{
+		"Id": 3,
+		"País": "Angola",
+		"quantidade(kg)": 0,
+		"valor (US$)": 0
+	},
+	....
+]
+```
 

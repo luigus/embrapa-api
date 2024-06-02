@@ -8,7 +8,7 @@ from data import get_producao_data, get_comercio_data, get_processa_data, get_im
 app = FastAPI()
 
 
-@app.get("/producao/{year}")
+@app.get("/api/producao/{year}")
 def producao(year: str):
 
     data = get_producao_data(year)
@@ -17,7 +17,7 @@ def producao(year: str):
     return json.loads(data)
 
 
-@app.get("/comercio/{year}")
+@app.get("/api/comercio/{year}")
 def comercio(year: str):
 
     data = get_comercio_data(year)
@@ -26,28 +26,28 @@ def comercio(year: str):
     return json.loads(data)
 
 
-@app.get("/processa/{_type}/{year}")
+@app.get("/api/processa/{_type}/{year}")
 def processa(_type: str, year: str):
 
-    data = get_processa_data(year, _type)
+    data = get_processa_data(_type, year)
     if not data:
         raise HTTPException(status_code=404, detail="Data not found or table does not exist")
     return json.loads(data)
 
 
-@app.get("/importacao/{_type}/{year}")
+@app.get("/api/importacao/{_type}/{year}")
 def importacao(_type: str, year: str):
 
-    data = get_importacao_data(year, _type)
+    data = get_importacao_data(_type, year,)
     if not data:
         raise HTTPException(status_code=404, detail="Data not found or table does not exist")
     return json.loads(data)
 
 
-@app.get("/exportacao/{_type}/{year}")
+@app.get("/api/exportacao/{_type}/{year}")
 def exportacao(_type: str, year: str):
 
-    data = get_exportacao_data(year, _type)
+    data = get_exportacao_data(_type, year)
     if not data:
         raise HTTPException(status_code=404, detail="Data not found or table does not exist")
     return json.loads(data)
