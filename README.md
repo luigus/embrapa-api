@@ -88,7 +88,7 @@ $ python -m uvicorn main:app --reload
 * http://localhost:8000/api/importacao/{type}/{year}
 * http://localhost:8000/api/exportacao/{type}/{year}
 
-#{year} could be beetween 1970 and 2023
+#### Year could be an integer beetween 1970 and 2023
 
 
 ## API
