@@ -2,7 +2,7 @@
 
 ## Required technologies
 
-* [Python] - Python in version >= 3.7.4
+* [Python] - Python in version >= 3.10
 * [SQLite3] - Database
 * [FastAPI] - Web Python lib
 * [UV] - uv is and extremely fast Python package and resolver.
@@ -20,7 +20,7 @@ $ git clone https://github.com/luigus/embrapa-api.git
 #### Using pip and virtualenv
 ```sh
 $ cd embrapa-api/
-$ python -m venv .venv -p python3.7
+$ python -m venv .venv -p python3.10
 $ source .venv/bin/activate
 $ pip install --upgrade pip
 $ pip install uv
